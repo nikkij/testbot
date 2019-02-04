@@ -5,6 +5,5 @@ from .models import Run
 
 def latest(request):
     latest = Run.objects.order_by('-id')[:1]
-    print(latest.values())
     response = JsonResponse(latest.values()[0])
     return response

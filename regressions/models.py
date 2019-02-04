@@ -11,7 +11,7 @@ class Run(models.Model):
     end = models.DateTimeField(auto_now=False, null=True)
 
 class Test(models.Model):
-    label = models.CharField(max_lenth=256)
+    label = models.CharField(max_length=256)
     status = models.CharField(max_length=30)
     duration = models.IntegerField()
     created = models.DateTimeField(auto_now_add=True)
