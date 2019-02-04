@@ -17,27 +17,8 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from regressions.models import Run, Test
 from regressions import views
+from regressions.views import RunViewSet, TestViewSet
 from rest_framework import routers, serializers, viewsets
-
-# move this all into its own files, but go here for now
-
-class TestSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Test
-        fields = ('label','status','duration','created','updated','start','end','run')
-
-class RunSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Run
-        fields = ('id','label','status','duration','submitter','created','updated','start','end','test_set')
-
-class RunViewSet(viewsets.ModelViewSet):
-    queryset = Run.objects.all()
-    serializer_class = RunSerializer
-
-class TestViewSet(viewsets.ModelViewSet):
-    queryset = Test.objects.all()
-    serializer_class = TestSerializer
 
 router = routers.DefaultRouter()
 router.register(r'runs', RunViewSet)
