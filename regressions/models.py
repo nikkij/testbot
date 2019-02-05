@@ -10,6 +10,21 @@ class Run(models.Model):
     start = models.DateTimeField(auto_now=False, null=True)
     end = models.DateTimeField(auto_now=False, null=True)
 
+    # TODO look into doing this a different way for perf (annotate?)
+    @property
+    def successes(self):
+        return self.test_set.filter(status='success').count()
+
+    # TODO look into doing this a different way for perf
+    @property
+    def failures(self):
+        return self.test_set.filter(status='failed').count()
+
+    # TODO look into doing this a different way for perf
+    @property
+    def total_tests_run(self):
+        return self.test_set.count()
+
 class Test(models.Model):
     label = models.CharField(max_length=256)
     status = models.CharField(max_length=30)

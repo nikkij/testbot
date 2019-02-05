@@ -26,6 +26,6 @@ router.register(r'tests', TestViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
-    url(r'^runs/latest', views.latest, name='latest'),
+    #url(r'^runs/latest/', views.latest, name='latest'),
     url(r'^admin/', admin.site.urls),
 ]

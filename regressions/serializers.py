@@ -9,4 +9,4 @@ class TestSerializer(serializers.ModelSerializer):
 class RunSerializer(serializers.ModelSerializer):
     class Meta:
         model = Run
-        fields = ('id','label','status','duration','submitter','created','updated','start','end','test_set')
+        fields = ('id','label','status','duration','submitter','created','updated','start','end','test_set','successes','failures','total_tests_run')
